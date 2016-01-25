@@ -7,4 +7,8 @@ describe('Todo', function() {
     expect(testTodo.priority).to.equal("high priority");
     expect(testTodo.notes).to.equal("need my meds");
   });
+  it("create a list display method of the entry and its deadline", function() {
+    var testTodo = new Todo("buy milk", "thursday morning", "anna", "medium priority", "2% please")
+    expect(testTodo.listDisplay()).to.equal("buy milk -- thursday morning");
+  });
 });
