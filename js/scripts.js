@@ -21,7 +21,7 @@ $(document).ready(function() {
     var inputtedNotes = $("input#new-notes").val();
     var newTodo = new Todo(inputtedEntry, inputtedDeadline, inputtedAssignee, inputtedPriority, inputtedNotes);
 
-    $("ul#todos").append("<li><span class='todo'>" + newTodo.listDisplay() + "</span></li>");
+    $("ul#todos").append("<div class='todo'><li>" + newTodo.listDisplay() + "</li></div>");
 
     $("input#new-entry").val("");
     $("input#new-deadline").val("");
@@ -30,10 +30,10 @@ $(document).ready(function() {
     $("input#new-notes").val("");
 
     $(".todo").last().click(function() {
-      $("li").removeClass("active");
-      $("li").last().addClass("active");
+      $(this).addClass("active").siblings().removeClass("active");
       $("#show-todo").show();
       $("#show-todo h2").text(newTodo.destination);
+      $(".entry").text(newTodo.entry);
       $(".deadline").text(newTodo.deadline);
       $(".assignee").text(newTodo.assignee);
       $(".priority").text(newTodo.priority);
@@ -41,6 +41,6 @@ $(document).ready(function() {
     });
     $(".complete").click(function() {
       $(".active").remove();
-    })
+    });
   });
 });
