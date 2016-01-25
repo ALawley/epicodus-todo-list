@@ -30,6 +30,8 @@ $(document).ready(function() {
     $("input#new-notes").val("");
 
     $(".todo").last().click(function() {
+      $("li").removeClass("active");
+      $("li").last().addClass("active");
       $("#show-todo").show();
       $("#show-todo h2").text(newTodo.destination);
       $(".deadline").text(newTodo.deadline);
@@ -37,5 +39,8 @@ $(document).ready(function() {
       $(".priority").text(newTodo.priority);
       $(".notes").text(newTodo.notes);
     });
+    $(".complete").click(function() {
+      $(".active").remove();
+    })
   });
 });
